@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ActionCableTest</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= action_cable_meta_tag %>
+    <%= javascript_include_tag "actioncable" %>
+    <%= javascript_tag do %>
+      ActionCable.logger.enabled = true;
+
+      window.App = { consumer: ActionCable.createConsumer() };
+    <% end %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

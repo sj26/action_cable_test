@@ -1,0 +1,21 @@
+<h1>Test#show</h1>
+
+<div id="count"></div>
+<%= javascript_tag do %>
+  window.App.consumer.subscriptions.create({channel: "TestChannel"}, {
+    received({ count }) {
+      document.getElementById("count").innerText = count;
+    }
+  });
+<% end %>
+
+<div id="contents"></div>
+<%= javascript_tag do %>
+  setTimeout(function() {
+    window.App.consumer.subscriptions.create({channel: "TestChannel"}, {
+      received({ contents }) {
+        document.getElementById("contents").innerText = contents;
+      }
+    });
+  }, 1000)
+<% end %>
